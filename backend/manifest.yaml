@@ -27,7 +27,7 @@ spec:
        image: sri8008/backend:v1
        envFrom:
        - configMapRef:
-          name: configs
+          name: backend-config
        ports:
        - containerPort: 8080
 
