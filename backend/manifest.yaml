@@ -1,51 +1,54 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mysql
+  name: backend
   namespace: expense
   labels:
     proj: expense
-    app: mysql
-    tier: db
+    app: backend
+    tier: api
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       proj: expense
-      app: mysql
-      tier: db
+      app: backend
+      tier: api
   template:
     metadata:
-      name: mysql
+      name: backend
       labels:
         proj: expense
-        app: mysql
-        tier: db
+        app: backend
+        tier: api
     spec:
      containers:
-     - name: mysql
-       image: sri8008/mysql:v1
+     - name: backend
+       image: sri8008/backend:v1
+       envFrom:
+       - configMapRef:
+          name: configs
        ports:
-       - containerPort: 3306
+       - containerPort: 8080
 
 ---
 
 apiVersion: v1 
 kind: Service
 metadata:
-  name: mysql-ns
+  name: backend-ns
   namespace: expense
   labels:
     proj: expense
 spec:
   selector:
     proj: expense
-    app: mysql
-    tier: db
+    app: backend
+    tier: api
   ports:
-  - name: mysql
+  - name: backend
     protocol: TCP
-    port: 3306
-    targetPort: 3306
+    port: 8080
+    targetPort: 8080
 
 
