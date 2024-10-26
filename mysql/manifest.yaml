@@ -33,7 +33,7 @@ spec:
 apiVersion: v1 
 kind: Service
 metadata:
-  name: mysql_ns
+  name: mysql-ns
   labels:
     proj: expense
 spec:
@@ -46,5 +46,5 @@ spec:
     protocol: TCP
     port: 3306
     targetPort: 3306
-    
+
 
