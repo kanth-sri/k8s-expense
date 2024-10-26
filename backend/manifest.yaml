@@ -36,7 +36,7 @@ spec:
 apiVersion: v1 
 kind: Service
 metadata:
-  name: backend-ns
+  name: backend
   namespace: expense
   labels:
     proj: expense
