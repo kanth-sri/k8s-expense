@@ -75,7 +75,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: sri8008/web:v1
+        image: sri8008/web:v2
 ---
 kind: Service
 apiVersion: v1
