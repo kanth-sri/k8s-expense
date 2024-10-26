@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+  namespace: expense
+  labels:
+    proj: expense
+    app: mysql
+    tier: db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      proj: expense
+      app: mysql
+      tier: db
+  template:
+    metadata:
+      name: mysql
+      labels:
+        proj: expense
+        app: mysql
+        tier: db
+    spec:
+     containers:
+     - name: mysql
+       image: sri8008/mysql:v1
+       ports:
+       - containerPort: 3306
+
+
+
